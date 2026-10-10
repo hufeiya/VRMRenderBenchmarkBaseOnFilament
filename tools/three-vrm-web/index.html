@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>three-vrm parity</title>
+<style>html,body{margin:0;height:100%;overflow:hidden;background:#708090}canvas{display:block}</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+    "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.js"
+  }
+}
+</script>
+</head>
+<body>
+<button onclick="requestFullscreen().then(()=>screen.orientation.lock&&screen.orientation.lock('portrait')).catch(()=>{})" style="position:fixed;top:8px;left:8px;z-index:9;padding:6px 10px">FS</button>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
+
+const cam = new URLSearchParams(location.search).get('cam') ?? 'full';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x708090);
+scene.add(new THREE.AmbientLight(0xffffff, 0.35 * Math.PI));
+const dir = new THREE.DirectionalLight(0xffffff, Math.PI);
+dir.position.set(-1, 2, 2);
+scene.add(dir);
+
+const camera = new THREE.PerspectiveCamera(30, innerWidth / innerHeight, 0.1, 20);
+if (cam === 'close') { camera.position.set(0, 1.36, 1.35); camera.lookAt(0, 1.34, 0); }
+else                 { camera.position.set(0, 1.10, 3.5);  camera.lookAt(0, 1.00, 0); }
+
+const clock = new THREE.Clock();
+const loader = new GLTFLoader();
+loader.register((parser) => new VRMLoaderPlugin(parser));
+loader.load('./' + (new URLSearchParams(location.search).get('model') || '10.vrm'), (gltf) => {
+  const vrm = gltf.userData.vrm;
+  VRMUtils.rotateVRM0(vrm);
+  scene.add(vrm.scene);
+  window.__vrmReady = true;
+  const tick = () => { vrm.update(clock.getDelta()); renderer.render(scene, camera); requestAnimationFrame(tick); };
+  tick();
+}, undefined, (e) => { document.title = 'LOAD_ERROR ' + e; });
+
+function requestFullscreen(){ const el = document.documentElement; return el.requestFullscreen ? el.requestFullscreen() : Promise.reject(); }
+window.addEventListener('resize', () => {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+});
+</script>
+</body>
+</html>

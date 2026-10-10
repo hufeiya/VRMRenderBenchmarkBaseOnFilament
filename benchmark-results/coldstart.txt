@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.neethu.filamentbasedbenchmark/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.neethu.filamentbasedbenchmark/.MainActivity
+TotalTime: 1421
+WaitTime: 1425
+Complete

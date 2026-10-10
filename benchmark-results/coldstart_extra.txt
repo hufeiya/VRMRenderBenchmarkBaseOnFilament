@@ -1,0 +1,4 @@
+TotalTime: 2873
+10-10 21:38:07.343  2242  2280 I ActivityTaskManager: Fully drawn com.neethu.filamentbasedbenchmark/.MainActivity: +6s928ms
+TotalTime: 1676
+10-10 21:38:21.583  2242  2280 I ActivityTaskManager: Fully drawn com.neethu.filamentbasedbenchmark/.MainActivity: +6s815ms

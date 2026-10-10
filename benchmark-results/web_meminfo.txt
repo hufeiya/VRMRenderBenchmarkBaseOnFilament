@@ -1,0 +1,74 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 396846347 Realtime: 792376588
+
+** MEMINFO in pid 27355 [com.android.browser] **
+                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------   ------
+  Native Heap    80116    79976       24       79    81444   108104   104118     3985
+  Dalvik Heap    16502    16464        0       34    17152    30869    15435    15434
+ Dalvik Other     7182     7008        0        0     7920                           
+        Stack     4848     4848        0        0     4860                           
+       Ashmem    13276      164        0        0    26404                           
+      Gfx dev   680008   680008        0        0   680008                           
+    Other dev       96        0       96        0      364                           
+     .so mmap    30514     4800     3652        2   105240                           
+    .jar mmap     2725        0      708        0    34860                           
+    .apk mmap     2410        0      308        0    10028                           
+    .ttf mmap     6369        0     5448        0     8380                           
+    .dex mmap    71481       80    23768        0   130884                           
+    .oat mmap      295        0        0        0    16016                           
+    .art mmap     2478     2176       64       51    14808                           
+   Other mmap     2064        4     1564        0     4308                           
+   EGL mtrack    30216    30216        0        0    30216                           
+    GL mtrack   102292   102292        0        0   102292                           
+      Unknown    18858    18844        4        1    19160                           
+        TOTAL  1071897   946880    35636      167  1071897   138973   119553    19419
+ 
+ App Summary
+                       Pss(KB)                        Rss(KB)
+                        ------                         ------
+           Java Heap:    18704                          31960
+         Native Heap:    79976                          81444
+                Code:    38764                         305872
+               Stack:     4848                           4860
+            Graphics:   812516                         812516
+       Private Other:    27708
+              System:    89381
+             Unknown:                                   57692
+ 
+           TOTAL PSS:  1071897            TOTAL RSS:  1294344       TOTAL SWAP PSS:      167
+ 
+ Objects
+               Views:      326         ViewRootImpl:        1
+         AppContexts:        8           Activities:        1
+              Assets:       24        AssetManagers:        0
+       Local Binders:      115        Proxy Binders:       55
+       Parcel memory:      145         Parcel count:      142
+    Death Recipients:        8      OpenSSL Sockets:       10
+            WebViews:        0
+ 
+ SQL
+         MEMORY_USED:     5421
+  PAGECACHE_OVERFLOW:     3109          MALLOC_SIZE:      192
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)          cache  Dbname
+         4     3300             84        16/31/9  /data/user/0/com.android.browser/databases/browser2.db
+         4     3300             86         9/22/8  /data/user/0/com.android.browser/databases/browser2.db (1)
+         4      560             23         0/19/2  /data/user/0/com.android.browser/databases/permission
+         4        8                         0/0/0    (attached) temp
+         4      560             25         2/14/2  /data/user/0/com.android.browser/databases/permission (2)
+         4      560             25         1/15/2  /data/user/0/com.android.browser/databases/permission (3)
+         4       44             94       39/68/14  /data/user/0/com.android.browser/databases/out_bdbehavior.db
+         4       44            109       13/27/14  /data/user/0/com.android.browser/databases/out_bdbehavior.db (2)
+         4      136             82         4/18/3  /data/user/0/com.android.browser/databases/ai_apps_pms.db
+         4       24             23         0/19/2  /data/user/0/com.android.browser/databases/swan_app
+         4        8                         0/0/0    (attached) temp
+         4       24             37         1/14/2  /data/user/0/com.android.browser/databases/swan_app (2)
+         4       20             17         0/16/1  /data/user/0/com.android.browser/databases/tpgcc.db
+         4       20             30         1/19/2  /data/user/0/com.android.browser/files/lldt/hst.db
+         4      204             46        18/30/5  /data/user/0/com.android.browser/databases/article
+         4        8                         0/0/0    (attached) temp
+         4      204             31         5/14/2  /data/user/0/com.android.browser/databases/article (2)
+         4       20            101         8/22/7  /data/user/0/com.android.browser/databases/quicklinksv6.db
