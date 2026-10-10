@@ -94,12 +94,7 @@ private fun BenchmarkScreen() {
         AvatarView(
             modifier = Modifier.fillMaxSize(),
             controller = controller,
-            config = AvatarConfig(
-                renderSettings = com.neethu.corelib.AvatarRenderSettings(
-                    ambientOcclusion = com.neethu.corelib.AmbientOcclusionQuality.OFF,
-                    antiAliasing = com.neethu.corelib.AntiAliasingMode.NONE,
-                ),
-            ),
+            config = AvatarConfig(),
         )
 
         when (val s = state) {
